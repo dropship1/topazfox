@@ -1,0 +1,57 @@
+header {
+    background: #7700FF;
+    z-index: -1;
+    .logo {
+        font-weight: bold;
+    }
+
+    nav {
+        justify-self: right;
+    
+        ul {
+            list-style-type: none;
+            margin: 0; padding: 0;
+
+            li {
+                float: left;
+
+                a {
+                    padding: 1.5em;
+                    text-transform: uppercase;
+                    font-size: .8em;
+
+                    &:hover {
+                        background: #8E2BFF;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.foxlogo{
+position: absolute;
+z-index: 1;
+}
+  
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.3em;
+    display: grid;
+    grid-template-columns: 30% auto;
+    z-index: -1;
+
+    a {
+        color: white;
+    }
+}
+
+
+.image_container {
+    text-align: center;
+    line-height: 400px;
+    img {
+        vertical-align: middle;
+    }
+}
