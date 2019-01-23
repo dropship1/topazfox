@@ -1,0 +1,65 @@
+.navbarGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  grid-auto-rows:minmax(25px, auto);
+  
+  /*   div{
+      background:green;
+      padding:1em;
+    }
+    div:nth-child(odd){
+      background:red;
+    } */
+  
+}
+  
+.navbarTitleRouteNestedGrid{
+  grid-column: 1;
+  grid-row:1/1;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-auto-rows:minmax(75px, auto);
+  background:rgb(192,192,192);
+  
+/*   div{
+    background:blue;
+    padding:1em;
+  }
+  div:nth-child(odd){
+    background:orange;
+  } */
+
+
+}
+
+.navbarAlignAppTitle{
+  justify-self: center;
+  align-self: center;
+  font-weight: bold;
+}
+
+.navbarFloatOverlapLogo{
+  grid-column: 1;
+  grid-row:1/3;
+  justify-self: start;
+  align-self: start;
+}
+
+
+
+.navbarSubTitleNestedGrid{
+  grid-column: 1;
+  grid-row:2/3;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  
+/*   div{
+    background:blue;
+    padding:1em;
+  }
+  div:nth-child(odd){
+    background:orange;
+  } */
+  
+}
+  

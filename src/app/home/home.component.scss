@@ -1,65 +1,19 @@
 .homeGrid{
   display:grid;
-  grid-template-columns:1fr;
-  grid-auto-rows:minmax(100px, auto);
-
-/*   div{
-    background:green;
-    padding:1em;
-  }
-  div:nth-child(odd){
-    background:red;
-  } */
-
-}
-
-.homeTitleRouteNestedGrid{
-  grid-column: 1;
-  grid-row:1/1;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr 1fr;
-  grid-auto-rows:minmax(100px, auto);
-  background:rgb(192,192,192);
-  
-/*   div{
-    background:blue;
-    padding:1em;
-  }
-  div:nth-child(odd){
-    background:orange;
-  } */
-
-
-}
-
-.homeAlignAppTitle{
-  justify-self: center;
-  align-self: center;
-  font-weight: bold;
-}
-
-.homeFloatOverlapLogo{
-  grid-column: 1;
-  grid-row:1/3;
-  justify-self: start;
-  align-self: start;
-}
-
-
-
-.homeWorldSelectionNestedGrid{
-  grid-column: 1;
-  grid-row:2/3;
-  display:grid;
   grid-template-columns:2fr 1fr 2fr;
-  grid-auto-rows:minmax(100px, auto);
+  grid-auto-rows:minmax(75px, auto);
   
-/*   div{
-    background:blue;
-    padding:1em;
-  }
-  div:nth-child(odd){
-    background:orange;
-  } */
+  /*   div{
+      background:green;
+      padding:1em;
+    }
+    div:nth-child(odd){
+      background:red;
+    } */
+    
+ }
   
+.homeAlignWorldSelection{
+  grid-column: 2/3;
+  grid-row: 2/4
 }
