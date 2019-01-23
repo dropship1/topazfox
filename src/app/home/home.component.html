@@ -1,11 +1,18 @@
-<img class="foxlogo" src="/assets/topazfox_logo_thumbnail.png">
-
-<header>
-  <div class="container">
-    <a routerLink="/" class="logo">{{ appTitle }}</a>
+<div class="homeGrid">
+  <div class="homeTitleRouteNestedGrid">
+    <div class="homeAlignAppTitle"><a routerLink="/" class="logo">{{ appTitle }}</a></div>
   </div>
-</header>
+  
+  <div class="homeWorldSelectionNestedGrid">
+    <div></div>
+    <div>
+      <img (mouseover)="mouseOver()" (mouseleave)="mouseLeave()" src={{image}}>
+    </div>
+    <div></div>
+  </div>
 
-<div class="image_container">
-<img (mouseover)="mouseOver()" (mouseleave)="mouseLeave()" src={{image}}>
+  <div class="homeFloatOverlapLogo">
+    <img class="foxlogo" src="/assets/topazfox_logo_thumbnail.png">
+  </div>
+  
 </div>

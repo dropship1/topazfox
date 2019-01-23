@@ -1,57 +1,65 @@
-header {
-    background: #7700FF;
-    z-index: -1;
-    .logo {
-        font-weight: bold;
-    }
+.homeGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  grid-auto-rows:minmax(100px, auto);
 
-    nav {
-        justify-self: right;
-    
-        ul {
-            list-style-type: none;
-            margin: 0; padding: 0;
+/*   div{
+    background:green;
+    padding:1em;
+  }
+  div:nth-child(odd){
+    background:red;
+  } */
 
-            li {
-                float: left;
-
-                a {
-                    padding: 1.5em;
-                    text-transform: uppercase;
-                    font-size: .8em;
-
-                    &:hover {
-                        background: #8E2BFF;
-                    }
-                }
-            }
-        }
-    }
 }
 
-.foxlogo{
-position: absolute;
-z-index: 1;
-}
+.homeTitleRouteNestedGrid{
+  grid-column: 1;
+  grid-row:1/1;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-auto-rows:minmax(100px, auto);
+  background:rgb(192,192,192);
   
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.3em;
-    display: grid;
-    grid-template-columns: 30% auto;
-    z-index: -1;
+/*   div{
+    background:blue;
+    padding:1em;
+  }
+  div:nth-child(odd){
+    background:orange;
+  } */
 
-    a {
-        color: white;
-    }
+
+}
+
+.homeAlignAppTitle{
+  justify-self: center;
+  align-self: center;
+  font-weight: bold;
+}
+
+.homeFloatOverlapLogo{
+  grid-column: 1;
+  grid-row:1/3;
+  justify-self: start;
+  align-self: start;
 }
 
 
-.image_container {
-    text-align: center;
-    line-height: 400px;
-    img {
-        vertical-align: middle;
-    }
+
+.homeWorldSelectionNestedGrid{
+  grid-column: 1;
+  grid-row:2/3;
+  display:grid;
+  grid-template-columns:2fr 1fr 2fr;
+  grid-auto-rows:minmax(100px, auto);
+  
+/*   div{
+    background:blue;
+    padding:1em;
+  }
+  div:nth-child(odd){
+    background:orange;
+  } */
+  
 }
