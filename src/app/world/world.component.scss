@@ -47,6 +47,7 @@
 }
 .fill img {
   flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%
+  width: 100px;
+  height: 100px;
+  opacity: 1.0;
 }
