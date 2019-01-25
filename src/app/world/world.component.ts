@@ -88,9 +88,15 @@ export class WorldComponent implements OnInit {
   ngOnInit() {
   }
 
+ 
+  myFunc: Function = this.updateGrid.bind(this);
 
+  interval: number;
   mouseLeave(gridId: number){
     if(this.worldGrids[gridId].type == 'edge'){
+      if(this.waiting == true){ this.waiting = false;}
+      else{return;}
+      clearInterval(this.interval);
     }
     else{
       this.worldGrids[gridId].currentStyle = this.originalStyle;
@@ -101,10 +107,17 @@ export class WorldComponent implements OnInit {
     if(this.worldGrids[gridId].type == 'edge'){
       if(this.waiting == true){return;}
       this.waiting = true;
-      timer(150, 1000).pipe(
-        take(1)).subscribe(x=>{
-           this.waiting = false;
-         })
+      this.interval = setInterval(this.myFunc,150);
+    }
+    else{
+      //this.worldGrids[gridId].originalImage = this.worldGrids[gridId].currentImage;
+      //this.worldGrids[gridId].currentImage = "/assets/snow_ground_glow.png";
+      this.worldGrids[gridId].currentStyle = this.style;
+    }
+
+  }
+
+  updateGrid(){
       this.currentIndex++;
       if (this.currentIndex == 17){
         this.worldGrids[1] = this.grids[1+this.currentIndex];
@@ -141,13 +154,6 @@ export class WorldComponent implements OnInit {
       this.worldGrids[2].id = 2;
       this.worldGrids[3].id = 3;
       this.worldGrids[4].id = 4;
-      console.log("on edge: in mouseEnter: gridId is: "+gridId);
-    }
-    else{
-      //this.worldGrids[gridId].originalImage = this.worldGrids[gridId].currentImage;
-      //this.worldGrids[gridId].currentImage = "/assets/snow_ground_glow.png";
-      this.worldGrids[gridId].currentStyle = this.style;
-    }
   }
 
 }
