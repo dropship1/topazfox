@@ -1,8 +1,8 @@
 <div class="worldGrid">
   <div></div>
   <div class="worldGridNested">
-    <div routerLink="/cell" class="fill" *ngFor="let key of objectKeys(worldGrids);">
-      <img (mousemove)="mouseOver(worldGrids[key].id)" (mouseleave)="mouseLeave(worldGrids[key].id)" src={{worldGrids[key].currentImage}} [ngStyle]="worldGrids[key].currentStyle">
+    <div routerLink="/cell" class="fill" *ngFor="let key of objectKeys(worldCells);">
+      <img (mousemove)="mouseOver(worldCells[key].id)" (mouseleave)="mouseLeave(worldCells[key].id)" src={{worldCells[key].currentImage}} [ngStyle]="worldCells[key].currentStyle">
     </div>
   </div>
   <div></div>
