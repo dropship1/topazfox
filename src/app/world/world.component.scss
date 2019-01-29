@@ -11,20 +11,21 @@
   
 }
 
+#player{
+  color: red;
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
 
-.worldGridNested{
-  display:grid;
-  grid-template-columns:repeat(10, 100px);
-  grid-template-rows:repeat(4, 100px);
-  grid-row-gap: 0px;
-/*   div{
-    background:green;
-    padding:1em;
-  }
-  div:nth-child(odd){
-    background:red;
-  }  */
+.worldNested{
+  position:relative;
   
+}
+
+.worldCell{
+  position:absolute;
 }
 
 .worldDiv{

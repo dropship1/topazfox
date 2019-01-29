@@ -9,12 +9,16 @@ import {take} from 'rxjs/operators';
 })
 export class WorldComponent implements OnInit {
 
-
+  playerStyle: Object = { "left": "0px", "top": "0px" };
+  playerCurrentImage: string = "/assets/player_fox_placeholder1.png";
   originalStyle: Object = { };
   style: Object = { "-webkit-filter": "brightness(115%)", "filter": "brightness(115%)"};
   initialImage: string = "/assets/snow_ground1.png";
   currentIndex = 0;
   waiting = false;
+
+  previousX: number = 0;
+  previousY: number = 0;
   cell1: Object = { currentImage: this.initialImage, originalImage: this.initialImage, id: 1, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};
   cell2: Object = { currentImage: "/assets/snow_ground1_rocks.png", originalImage: this.initialImage, id: 2, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};  
   cell3: Object = { currentImage: this.initialImage, originalImage: this.initialImage, id: 3, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};  
@@ -90,8 +94,11 @@ export class WorldComponent implements OnInit {
 
  
   myFunc: Function = this.updateGrid.bind(this);
+  moveFunc: Function = this.movePlayer.bind(this);
+  
 
   interval: number;
+  interval2: number;
   mouseLeave(cellId: number){
     if(this.worldCells[cellId].type == 'edge'){
       if(this.waiting == true){ this.waiting = false;}
@@ -111,6 +118,55 @@ export class WorldComponent implements OnInit {
     else{
       this.worldCells[cellId].currentStyle = this.style;
     }
+
+  }
+
+
+  mouseClickOverWorld(event: any){
+    clearInterval(this.interval2);
+    this.movePlayer(event);
+    
+  }
+
+  mouseLeaveWorld(){
+  }
+    
+  mouseOverPlayer(){
+  }
+  
+  mouseLeavePlayer(){
+  } 
+
+
+  movePlayer(event: any){
+
+    let move: Function = (event: any) => {
+      let positionX: number = event.layerX;
+      let positionY: number = event.layerY;
+      this.previousX;
+      this.previousY;
+      if (positionX > this.previousX ){
+        this.previousX = this.previousX +1;
+        this.playerStyle['left'] = `${this.previousX}px`;
+      }
+      else if (positionX < this.previousX ){
+        this.previousX = this.previousX -1;
+        this.playerStyle['left'] = `${this.previousX}px`;
+      }
+      if (positionY > this.previousY ){
+        this.previousY = this.previousY +1;
+        this.playerStyle['top'] = `${this.previousY}px`;
+      }
+      else if (positionY < this.previousY ){
+        this.previousY = this.previousY - 1;
+        this.playerStyle['top'] = `${this.previousY}px`;
+      }
+      if (positionY == this.previousY && positionX == this.previousX){
+        clearInterval(this.interval2);
+      }
+    };
+
+    this.interval2 = setInterval(move,10, event);
 
   }
 
