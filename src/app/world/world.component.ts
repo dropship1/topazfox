@@ -9,7 +9,8 @@ import {take} from 'rxjs/operators';
 })
 export class WorldComponent implements OnInit {
 
-  playerStyle: Object = { "left": "0px", "top": "0px" };
+  imageStylePosition: Object = { "left": "0px", "top": "0px" };
+  playerStylePosition: Object = { "left": "200px", "top": "200px" };  
   playerCurrentImage: string = "/assets/player_fox_placeholder1.png";
   originalStyle: Object = { };
   style: Object = { "-webkit-filter": "brightness(115%)", "filter": "brightness(115%)"};
@@ -17,8 +18,10 @@ export class WorldComponent implements OnInit {
   currentIndex = 0;
   waiting = false;
 
-  previousX: number = 0;
-  previousY: number = 0;
+  xIteration: number = 1;
+  yIteration: number = 1;
+  currentXPosition: number = 0;
+  currentYPosition: number = 0;
   cell1: Object = { currentImage: this.initialImage, originalImage: this.initialImage, id: 1, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};
   cell2: Object = { currentImage: "/assets/snow_ground1_rocks.png", originalImage: this.initialImage, id: 2, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};  
   cell3: Object = { currentImage: this.initialImage, originalImage: this.initialImage, id: 3, type: "world", currentStyle: this.originalStyle, originalStyle: this.originalStyle};  
@@ -99,7 +102,7 @@ export class WorldComponent implements OnInit {
 
   interval: number;
   interval2: number;
-  mouseLeave(cellId: number){
+  mouseLeaveCell(cellId: number){
     if(this.worldCells[cellId].type == 'edge'){
       if(this.waiting == true){ this.waiting = false;}
       else{return;}
@@ -109,7 +112,7 @@ export class WorldComponent implements OnInit {
       this.worldCells[cellId].currentStyle = this.originalStyle;
     }
   }
-  mouseOver(cellId: number){
+  mouseOverCell(cellId: number){
     if(this.worldCells[cellId].type == 'edge'){
       if(this.waiting == true){return;}
       this.waiting = true;
@@ -140,34 +143,34 @@ export class WorldComponent implements OnInit {
 
   movePlayer(event: any){
 
-    let move: Function = (event: any) => {
-      let positionX: number = event.layerX;
-      let positionY: number = event.layerY;
-      this.previousX;
-      this.previousY;
-      if (positionX > this.previousX ){
-        this.previousX = this.previousX +1;
-        this.playerStyle['left'] = `${this.previousX}px`;
+    let move: Function = (moveAmountX: number, moveAmountY: number, xDirection: number, yDirection: number) => {
+      if (this.xIteration <= moveAmountX){
+        ++this.xIteration;
+        this.currentXPosition = this.currentXPosition+(1*xDirection);
+        this.imageStylePosition['left'] = `${this.currentXPosition}px`;
       }
-      else if (positionX < this.previousX ){
-        this.previousX = this.previousX -1;
-        this.playerStyle['left'] = `${this.previousX}px`;
+      if (this.yIteration <= moveAmountY){
+        ++this.yIteration;
+        this.currentYPosition = this.currentYPosition+(1*yDirection);
+        this.imageStylePosition['top'] = `${this.currentYPosition}px`; 
       }
-      if (positionY > this.previousY ){
-        this.previousY = this.previousY +1;
-        this.playerStyle['top'] = `${this.previousY}px`;
-      }
-      else if (positionY < this.previousY ){
-        this.previousY = this.previousY - 1;
-        this.playerStyle['top'] = `${this.previousY}px`;
-      }
-      if (positionY == this.previousY && positionX == this.previousX){
+      if (this.xIteration > moveAmountX && this.yIteration > moveAmountY){
         clearInterval(this.interval2);
+        this.xIteration = 1;
+        this.yIteration = 1;
       }
     };
 
-    this.interval2 = setInterval(move,10, event);
-
+    let clickPositionX: number = event.clientX - 426;
+    let clickPositionY: number = event.clientY - 147;
+    let moveAmountX = Math.abs(clickPositionX-256);
+    let moveAmountY = Math.abs(clickPositionY-256);
+    let xDirection: number = Math.sign(256-clickPositionX);
+    let yDirection: number = Math.sign(256-clickPositionY);
+    if (moveAmountX != 0 || moveAmountY != 0){
+      this.interval2 = setInterval(move, 10, moveAmountX, moveAmountY, xDirection, yDirection);
+    }
+    
   }
 
   updateGrid(){
