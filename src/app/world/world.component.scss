@@ -1,15 +1,36 @@
-.worldGrid{
-  display:grid;
-  grid-template-columns:427px 512px 427px;
-/*   div{
-    background:green;
-    padding:1em;
-  }
-  div:nth-child(odd){
-    background:red;
-  }  */
-  
+#gameArea {
+  position: absolute;
+  left:15%;
+  right:15%;
+  top:10%;
+  bottom:10%;
+  background-color: orange;
 }
+
+#gameCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: purple;
+}
+
+
+
+
+
+
+// .worldGrid{
+//   display:grid;
+//   grid-template-columns:427px 512px 427px;
+// /*   div{
+//     background:green;
+//     padding:1em;
+//   }
+//   div:nth-child(odd){
+//     background:red;
+//   }  */
+  
+// }
 
 #player{
   color: red;
@@ -24,32 +45,31 @@
 }
 
 #playerImage{
-
 }
 
-.worldNested{ 
-  width: 512px;
-  height: 512px;
-}
+// .worldNested{ 
+//   width: 512px;
+//   height: 512px;
+// }
 
-.world{
-  position:relative;
-  max-width: 100%;
-  max-height: 100%; 
-  width:512px;
-  height: 512px;
-  overflow: hidden;
-  border:1px solid red;
-}
+// .world{
+//   position:relative;
+//   max-width: 100%;
+//   max-height: 100%; 
+//   width:512px;
+//   height: 512px;
+//   overflow: hidden;
+//   border:1px solid red;
+// }
 
-.worldCell{
-  position:absolute;
-  left: 0;
-  right: 0;
-  margin: 0 0;
-  display: inline-block;
-  img{
-    width: 512px;
-    height: 512px;
-  }
-}
+// .worldCell{
+//   position:absolute;
+//   left: 0;
+//   right: 0;
+//   margin: 0 0;
+//   display: inline-block;
+//   img{
+//     width: 512px;
+//     height: 512px;
+//   }
+// }

@@ -1,13 +1,4 @@
-<div class="worldGrid">
-  <div></div>
-  <div class="worldNested">
-    <div class="world" (click)="mouseClickOverWorld($event)" (click)="mouseLeaveWorld()">
-      <div id="player"><img id="playerImage" (mousemove)="mouseOverPlayer()"  (mouseleave)="mouseLeavePlayer()" src={{playerCurrentImage}}></div>
-      <!-- <div routerLink="/cell" class="worldCell" *ngFor="let key of objectKeys(worldCells);"> -->
-      <div class="worldCell" [ngStyle]="imageStylePosition" *ngFor="let key of objectKeys(worldCells);">
-        <img (mousemove)="mouseOverCell(worldCells[key].id)" (mouseleave)="mouseLeaveCell(worldCells[key].id)" src={{worldCells[key].currentImage}} [ngStyle]="worldCells[key].currentStyle">
-      </div>
-    </div>
-  </div>
-  <div></div>
-</div>
+<div id="gameArea">
+  <div id="gameCanvas" (click)="mouseClickOverWorld($event)">GameCanvas</div>
+  <div id="player"><img id="playerImage" (click)="mouseOverPlayer($event)" src={{playerCurrentImage}}></div>
+</div>   

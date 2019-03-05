@@ -97,7 +97,7 @@ export class WorldComponent implements OnInit {
 
  
   myFunc: Function = this.updateGrid.bind(this);
-  moveFunc: Function = this.movePlayer.bind(this);
+  moveFunc: Function = this.shiftWorld.bind(this);
   
 
   interval: number;
@@ -127,21 +127,23 @@ export class WorldComponent implements OnInit {
 
   mouseClickOverWorld(event: any){
     clearInterval(this.interval2);
-    this.movePlayer(event);
+    this.shiftWorld(event);
     
   }
 
   mouseLeaveWorld(){
   }
     
-  mouseOverPlayer(){
+  mouseOverPlayer(event: any){
+    console.log("Clicked On player: ");
+    console.log(event);
   }
   
   mouseLeavePlayer(){
   } 
 
 
-  movePlayer(event: any){
+  shiftWorld(event: any){
 
     let move: Function = (moveAmountX: number, moveAmountY: number, xDirection: number, yDirection: number) => {
       if (this.xIteration <= moveAmountX){
@@ -160,16 +162,17 @@ export class WorldComponent implements OnInit {
         this.yIteration = 1;
       }
     };
-
-    let clickPositionX: number = event.clientX - 426;
-    let clickPositionY: number = event.clientY - 147;
-    let moveAmountX = Math.abs(clickPositionX-256);
-    let moveAmountY = Math.abs(clickPositionY-256);
-    let xDirection: number = Math.sign(256-clickPositionX);
-    let yDirection: number = Math.sign(256-clickPositionY);
-    if (moveAmountX != 0 || moveAmountY != 0){
-      this.interval2 = setInterval(move, 10, moveAmountX, moveAmountY, xDirection, yDirection);
-    }
+    console.log("Clicked On game canvas: ");
+    console.log(event);
+    //let clickPositionX: number = event.clientX - (playerXPosition+playerHalfWidth);
+    //let clickPositionY: number = event.clientY - (playerYPosition+playerHalfHeight);
+    //let moveAmountX = Math.abs(clickPositionX-256);
+    //let moveAmountY = Math.abs(clickPositionY-256);
+    //let xDirection: number = Math.sign(256-clickPositionX);
+    //let yDirection: number = Math.sign(256-clickPositionY);
+    //if (moveAmountX != 0 || moveAmountY != 0){
+    //  this.interval2 = setInterval(move, 10, moveAmountX, moveAmountY, xDirection, yDirection);
+    //}
     
   }
 
